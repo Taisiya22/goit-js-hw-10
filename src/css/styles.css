@@ -10,6 +10,7 @@ body {
   background-color: #fafafa;
   color: #212121;
   line-height: 1.5;
+  background-color: bisque;
 }
 
 #search-box {
@@ -18,3 +19,8 @@ body {
   max-width: 320px;
   margin-bottom: 16px;
 }
+ .country-list {
+list-style: none;
+padding-left: 20px;
+margin: 0;
+ }
