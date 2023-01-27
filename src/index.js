@@ -16,8 +16,8 @@ inputText.addEventListener('input', debounce(onSearchCountry, DEBOUNCE_DELAY));
 function onSearchCountry(e) { 
   let inputValue = e.target.value.trim();
   if (inputValue === '') {
-    list.innerHTML = '';
-    info.innerHTML = '';
+    Notiflix.Notify.warning('Entry name country!');
+    clearMarkup();
     return;
    } 
   
@@ -34,7 +34,7 @@ function renderCountryList(countries) {
 </li>`}, '')
   
   if (countries.length === 1) { 
-     info.innerHTML = countries.reduce((acc, { flags: { svg }, name: { official }, capital, population, languages }) => {
+     info.innerHTML = countries.reduce((acc, { capital, population, languages }) => {
       return acc +  
       `<p><b>Capital:</b> ${capital}</p>
        <p><b>Population:</b> ${population}</p>
@@ -43,8 +43,7 @@ function renderCountryList(countries) {
   }
 
   if (countries.length > 10) {
-    info.innerHTML = '';
-    list.innerHTML = '';
+    clearMarkup();
     Notiflix.Notify.info('"Too many matches found. Please enter a more specific name."');
   }
   
@@ -53,7 +52,11 @@ function renderCountryList(countries) {
 function onError(error) { 
   console.error(error);
   Notiflix.Notify.failure("Oops, there is no country with that name");
-   list.innerHTML = '';
-    info.innerHTML = '';
+  clearMarkup();
   return error;
+}
+  
+function clearMarkup() { 
+   list.innerHTML = '';
+   info.innerHTML = '';
 }
