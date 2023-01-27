@@ -29,7 +29,7 @@ function onSearchCountry(e) {
 
 function renderCountryList(countries) { 
    list.innerHTML = countries.reduce((acc, { name: { official }, flags: { svg } }) => {return acc +  `<li>
-  <img src="${svg}" alt="flag" width = 200px>
+  <img src="${svg}" alt="flag" width = 100px>
   <p><b>${official}</b></p>
 </li>`}, '')
   

@@ -1,12 +1,8 @@
-const ENDPOINTS = 'https://restcountries.com/v3.1/name/${name}'
-const searchParams = new URLSearchParams(
-    {
+const ENDPOINTS = 'https://restcountries.com/v3.1'
 
-    }
-)
 
 export function fetchCountries(name) {
-   return fetch(`https://restcountries.com/v3.1/name/${name}?fields=name,capital,population,flags,languages`)
+   return fetch(`${ENDPOINTS}/name/${name}?fields=name,capital,population,flags,languages`)
         .then(responce => {
             if (!responce.ok) {
                 throw new Error(responce.status);
